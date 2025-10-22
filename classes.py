@@ -35,9 +35,15 @@ class Client:
         :return:
         """
         total = 0
-        for i in range(len(self.basket)):
-            total += products[self.basket["name"]]["price"] * self.basket[i]["name"]
         for product_purchase in self.basket:
-            product_price = products[product_purchase["name"]]["price"] * product_purchase["quantity"]
+            product_price = self.calculate_product_purchase(products[product_purchase["name"]])
             total += product_price
         return total
+
+    def calculate_product_purchase(self, product):
+        """
+
+        :param product:
+        :return:
+        """
+        return self.basket[product["name"]]["quantity"] * product["price"]
