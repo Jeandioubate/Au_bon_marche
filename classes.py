@@ -8,7 +8,7 @@ from dataclasses import dataclass
 class Product:
     """Représente un produit du primeur (fruit ou légume)."""
     name: str        # nom du produit
-    quantity: float  # quantité disponible (en kg ou en pièces)
+    quantity: float  # quantité disponible (en kg ou à l'unité')
     price: float     # prix unitaire
     unit: str        # 'kg' ou 'piece'
 
@@ -33,7 +33,7 @@ class Product:
         """Retourne une représentation textuelle lisible du produit."""
         return f"{self.name:<20} {self.quantity:.2f} {self.unit:<5} à {self.price:.2f} €/ {self.unit}"
 
-
+@dataclass
 class Client:
     """
     Classe représentant un client
@@ -41,15 +41,17 @@ class Client:
     - firstname : prénom du client
     - basket : dictionnaire de produits dont chaque clé est le nom du produit et la valeur la quantité achetée
     """
-    name: str = ""
-    firstname: str = ""
-    basket = {}
+    name: str
+    firstname: str
+    basket: dict
+    # basket: list
 
     def __init__(self, name: str, firstname: str) -> None:
         """
-
-        :param name:
-        :param firstname:
+        Usage : Create new client
+        :param name: Client's name
+        :param firstname: Client's firstname
+        Note : basket is not initialized
         """
         self.name = name
         self.firstname = firstname
@@ -66,24 +68,25 @@ class Client:
         else:
             self.basket[product] += quantity
 
-    def total_purchase(self, products) -> float:
+    def total_purchase(self, products: list) -> float:
         """
         Usage : calculate the amount of the purchase's total
         :param products: list of products
-
-        :param products:
-        :return:
+        :return: total amount of the basket
         """
         total = 0
-        for product_purchase in self.basket:
-            product_price = self.calculate_product_purchase(products[product_purchase["name"]])
-            total += product_price
+        for product_purchase in products:
+            if product_purchase.name in self.basket:
+                product_price = self.calculate_product_purchase(product_purchase.price, self.basket[product_purchase.name])
+                total += product_price
         return total
 
-    def calculate_product_purchase(self, product: object) -> float:
+    @staticmethod
+    def calculate_product_purchase(price: float, qty: int) -> float:
         """
         Usage : calculate the price of the product with the quantity
-        :param product:
+        :param price: product's unit price
+        :param qty: quantity purchased
         :return:
         """
-        return self.basket[product].quantity * product.price
+        return qty * price
