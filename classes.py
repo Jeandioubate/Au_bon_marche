@@ -1,12 +1,14 @@
 # #!/usr/bin/env python
 # #  -*- coding: utf-8 -*-
+from typing import Any
+
 
 class Client:
-    name = ""
-    firstname = ""
-    basket = {}
+    name: str = ""
+    firstname: str = ""
+    basket: dict[Any, Any] = {}
 
-    def __init__(self, name, firstname):
+    def __init__(self, name: str, firstname: str) -> None:
         """
 
         :param name:
@@ -15,7 +17,7 @@ class Client:
         self.name = name
         self.firstname = firstname
 
-    def add_purchase(self, product, quantity):
+    def add_purchase(self, product: str, quantity: int) -> None:
         """
 
         :param product:
@@ -27,11 +29,11 @@ class Client:
         else:
             self.basket[product] += quantity
 
-    def total_purchase(self, products):
+    def total_purchase(self, products: object) -> float:
         """
 
+        :type products: object
         :param products:
-        :return:
         :return:
         """
         total = 0
@@ -40,7 +42,7 @@ class Client:
             total += product_price
         return total
 
-    def calculate_product_purchase(self, product):
+    def calculate_product_purchase(self, product: object) -> float:
         """
 
         :param product:
