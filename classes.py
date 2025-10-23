@@ -90,8 +90,8 @@ class Client:
         """
         total = 0
         for product_purchase in products:
-            if product_purchase.name in self.basket:
-                product_price = self.calculate_product_purchase(product_purchase.price, self.basket[product_purchase.name])
+            if product_purchase in self.basket.keys():
+                product_price = self.calculate_product_purchase(products[product_purchase].price, self.basket[product_purchase])
                 total += product_price
         return total
 
@@ -126,11 +126,12 @@ class Primeur:
         print(f"Client : {client.firstname} {client.name}")
         print("-" * 40)
         total = 0
-        for name, qty in client.basket.values():
-            product = self.products[name]
-            subtotal = qty * product.price
-            print(f"{product.name:<20} {qty:.2f} {product.unit:<5} x {product.price:.2f} € = {qty * product.price:.2f} €")
-            total += subtotal
+        total = client.total_purchase(self.products)
+        # for name, qty in client.basket.values():
+        #     product = self.products[name]
+        #     subtotal = qty * product.price
+        #     print(f"{product.name:<20} {qty:.2f} {product.unit:<5} x {product.price:.2f} € = {qty * product.price:.2f} €")
+        #     total += subtotal
         print("-" * 40)
         print(f"Total à payer : {total:.2f} €")
         print("=" * 40 + "\n")
