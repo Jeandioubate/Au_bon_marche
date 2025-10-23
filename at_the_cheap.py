@@ -62,7 +62,11 @@ while menu_choice != 0:
     print("2 - Display current stock")
     print("3 - Display daily report")
     print("0 - Quit")
-    menu_choice = int(input("What do you want to do ?\n"))
+    try:
+        menu_choice = int(input("What do you want to do ?\n"))
+    except ValueError:
+        print("Error : must enter a number between 0 and 3.")
+        menu_choice = -1
     match menu_choice:
         case 0:
             break
@@ -74,10 +78,23 @@ while menu_choice != 0:
             finish = False
             while not finish:
                 cash_register.show_stock()
-                product_name = str(input("What product do you want to purchase ? (type product's name\n"))
-                product_quantity = float(input("What quantity do you want to buy ? (type a float number)\n"))
+                product_name = ""
+                while product_name not in cash_register.products:
+                    product_name = str(input("What product do you want to purchase ? (type product's name\n"))
+                product_quantity = -1
+                while product_quantity == -1:
+                    try:
+                        product_quantity = float(input("What quantity do you want to buy ? (type a float number)\n"))
+                    except ValueError:
+                        print("Error : value must be a positive number.")
                 new_sell.add_purchase(product_name, product_quantity)
-                finish_choice = int(input("Continue purchase ?\n 0 - No\n 1 - Yes\n"))
+                finish_choice = -1
+                while finish_choice not in (0,1):
+                    try:
+                        finish_choice = int(input("Continue purchase ?\n 0 - No\n 1 - Yes\n"))
+                    except ValueError:
+                        print("Error : value must be a number between 0 and 1")
+                        finish_choice = -1
                 if finish_choice == 0:
                     finish = True
                 else:
@@ -87,6 +104,10 @@ while menu_choice != 0:
             # Display stock
             cash_register.show_stock()
         case 3:
+            # Display daily report
             cash_register.daily_report()
+        case _:
+            print("Error : must enter a number between 0 and 3.")
+            menu_choice = -1
 
 print("Goodbye !")
