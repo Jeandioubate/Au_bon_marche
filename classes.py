@@ -45,7 +45,6 @@ class Client:
     name: str
     firstname: str
     basket: dict
-    # basket: list
 
     def __init__(self, name: str, firstname: str) -> None:
         """
@@ -57,7 +56,7 @@ class Client:
         self.name = name
         self.firstname = firstname
 
-    def add_purchase(self, product: str, quantity: int) -> None:
+    def add_purchase(self, product: str, quantity: float) -> None:
         """
         Usage : add purchase in basket
         :param product: product name
@@ -83,7 +82,7 @@ class Client:
         return total
 
     @staticmethod
-    def calculate_product_purchase(price: float, qty: int) -> float:
+    def calculate_product_purchase(price: float, qty: float) -> float:
         """
         Usage : calculate the price of the product with the quantity
         :param price: product's unit price
