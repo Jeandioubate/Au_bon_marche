@@ -1,5 +1,17 @@
-# Il s'agit d'un projet en binôme
+# Au bon marché
+## Caisse en ligne de commande
 
+### Sommaire
+But du programme
+Manuel d'utilisation
+Classes et méthodes
+Notes
+
+### But du programme
+
+### Manuel d'utilisation
+
+### Classes et méthodes
 - Produit :
 	- Attributs :
 		- Nom
@@ -30,6 +42,7 @@
 		- Afficher bilan()
 		- Afficher stock()
 
+### Notes
 Suggestions d'ajout :
 Séparer calculs et affichage
 Primeur : méthode Calculer_bilan
