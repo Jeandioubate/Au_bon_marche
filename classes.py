@@ -2,6 +2,7 @@
 # #  -*- coding: utf-8 -*-
 
 from dataclasses import dataclass
+from itertools import product
 from typing import Dict, List
 
 
@@ -125,13 +126,11 @@ class Primeur:
         print("\n Ticket de caisse")
         print(f"Client : {client.firstname} {client.name}")
         print("-" * 40)
-        total = 0
+        for product_purchased in self.products:
+            if product_purchased in client.basket.keys():
+                subtotal = client.basket[product_purchased] * self.products[product_purchased].price
+                print(f"{product_purchased:<20} {client.basket[product_purchased]:.2f} {self.products[product_purchased].unit:<5} x {self.products[product_purchased].price:.2f} € = {subtotal:.2f} €")
         total = client.total_purchase(self.products)
-        # for name, qty in client.basket.values():
-        #     product = self.products[name]
-        #     subtotal = qty * product.price
-        #     print(f"{product.name:<20} {qty:.2f} {product.unit:<5} x {product.price:.2f} € = {qty * product.price:.2f} €")
-        #     total += subtotal
         print("-" * 40)
         print(f"Total à payer : {total:.2f} €")
         print("=" * 40 + "\n")
