@@ -128,25 +128,49 @@ class Primeur:
         :param name: nom du client
         :param purchases: dictionnaire {nom_produit: quantité_achetée}
         """
-        client = Client(name, firstname)
+        client = Client(name, firstname) # Je crée un nouvel objet Client.
         print(f"\n🛒 Nouveau client : {client.firstname} {client.name}")
 
-        for product_name, qty in purchases.items():
+        for product_name, qty in purchases.items(): # Je parcours les achats demandés
             if product_name not in self.products:
-                print(f"  Produit '{product_name}' non trouvé dans le stock.")
-                continue
+                print(f"  Produit '{product_name}' non trouvé dans le stock.") # Je vérifie que chaque produit existe
+                continue                                                       # dans le stock
 
             product = self.products[product_name]
 
-            if product.sell(qty):
-                client.add_purchase(product_name, qty)
+            if product.sell(qty):   # Je vérifie que la quantité demandée est disponible et mets à jour le stock et le
+                client.add_purchase(product_name, qty) # le panier du client.
                 print(f" {qty} {product.unit} de {product.name} ajouté au panier.")
             else:
                 print(f" Impossible d'ajouter {qty} {product.unit} de {product.name} (stock insuffisant).")
 
-        # Enregistre le client
+        # J'enregistre le client
         self.clients.append(client)
 
-        # Affiche le ticket de caisse
+        # J'affiche le ticket de caisse
         self.display_ticket(client)
+
+    def daily_report(self) -> None:
+        """Affiche le bilan de la journée : nombre de clients, chiffre d’affaires et état du stock."""
+        print("\n BILAN DE LA JOURNÉE")
+        print("=" * 45)
+
+        if not self.clients:
+            print("Aucun client n’a été enregistré aujourd’hui.")
+            print("=" * 45)
+            return
+
+        total_clients = len(self.clients)
+        total_revenue = 0
+
+        for client in self.clients:
+            total_revenue += client.total_purchase(self.products)
+
+        print(f"Nombre total de clients servis : {total_clients}")
+        print(f"Chiffre d'affaires total       : {total_revenue:.2f} €")
+        print("-" * 45)
+        print("Stock restant :")
+        for p in self.products.values():
+            print(f"{p.name:<20} {p.quantity:.2f} {p.unit:<5} restants")
+        print("=" * 45)
 
