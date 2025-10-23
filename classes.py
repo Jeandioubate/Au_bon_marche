@@ -122,3 +122,32 @@ class Primeur:
         print(f"Total à payer : {total:.2f} €")
         print("=" * 40 + "\n")
 
+    def new_client(self, firstname: str, name: str, purchases: Dict[str, float]) -> None:
+        """
+        Gère l'arrivée d'un nouveau client et ses achats.
+        :param firstname: prénom du client
+        :param name: nom du client
+        :param purchases: dictionnaire {nom_produit: quantité_achetée}
+        """
+        client = Client(name, firstname)
+        print(f"\n🛒 Nouveau client : {client.firstname} {client.name}")
+
+        for product_name, qty in purchases.items():
+            if product_name not in self.products:
+                print(f"  Produit '{product_name}' non trouvé dans le stock.")
+                continue
+
+            product = self.products[product_name]
+
+            if product.sell(qty):
+                client.add_purchase(product_name, qty)
+                print(f" {qty} {product.unit} de {product.name} ajouté au panier.")
+            else:
+                print(f" Impossible d'ajouter {qty} {product.unit} de {product.name} (stock insuffisant).")
+
+        # Enregistre le client
+        self.clients.append(client)
+
+        # Affiche le ticket de caisse
+        self.display_ticket(client)
+
