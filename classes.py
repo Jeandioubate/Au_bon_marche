@@ -12,6 +12,8 @@ class Product:
     quantity: float  # quantité disponible (en kg ou à l'unité')
     price: float     # prix unitaire
     unit: str        # 'kg' ou 'piece'
+    UNIT_KG = "kg"
+    UNIT_PIECE = "pièce"
 
     def sell(self, qty: float) -> bool:
         """
@@ -173,4 +175,12 @@ class Primeur:
         for p in self.products.values():
             print(f"{p.name:<20} {p.quantity:.2f} {p.unit:<5} restants")
         print("=" * 45)
+
+    def add_product(self, product) -> None:
+        """
+
+        :param product:
+        :return:
+        """
+        self.products[product.name] = product
 
