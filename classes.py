@@ -96,7 +96,7 @@ class Client:
 class Primeur:
     """Gère le stock du magasin et les clients de la journée."""
 
-    def __init__(self, firstname, name, basket, total_purchase):
+    def __init__(self) -> None:
         self.products: Dict[str, Product] = {}
         self.clients: List[Client] = []
 
