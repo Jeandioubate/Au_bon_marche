@@ -136,17 +136,17 @@ class Primeur:
         print(f"Total à payer : {total:.2f} €")
         print("=" * 40 + "\n")
 
-    def new_client(self, firstname: str, name: str, purchases: Dict[str, float]) -> None:
+    def new_client(self, client: Client ) -> None:
         """
         Gère l'arrivée d'un nouveau client et ses achats.
         :param firstname: prénom du client
         :param name: nom du client
         :param purchases: dictionnaire {nom_produit: quantité_achetée}
         """
-        client = Client(name, firstname) # Je crée un nouvel objet Client.
-        print(f"\n🛒 Nouveau client : {client.firstname} {client.name}")
+        #client = Client(name, firstname) # Je crée un nouvel objet Client.
+        print(f"\n Nouveau client : {client.firstname} {client.name}")
 
-        for product_name, qty in purchases.items(): # Je parcours les achats demandés
+        for product_name, qty in client.basket.items(): # Je parcours les achats demandés
             if product_name not in self.products:
                 print(f"  Produit '{product_name}' non trouvé dans le stock.") # Je vérifie que chaque produit existe
                 continue                                                       # dans le stock
@@ -154,10 +154,11 @@ class Primeur:
             product = self.products[product_name]
 
             if product.sell(qty):   # Je vérifie que la quantité demandée est disponible et mets à jour le stock et le
-                client.add_purchase(product_name, qty) # le panier du client.
-                print(f" {qty} {product.unit} de {product.name} ajouté au panier.")
+
+                #client.add_purchase(product_name, qty) # le panier du client.
+                print(f" {qty} {product.unit} de {product.name} vendu.")
             else:
-                print(f" Impossible d'ajouter {qty} {product.unit} de {product.name} (stock insuffisant).")
+                print(f" Stock insuffisant pour {product.name}")
 
         # J'enregistre le client
         self.clients.append(client)
