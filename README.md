@@ -3,8 +3,11 @@
 
 ### Sommaire
 But du programme(#but-du-programme)
+
 Manuel d'utilisation(#manuel-d'utilisation)
+
 Classes et méthodes(classes-et-méthodes)
+
 Notes(#notes)
 
 ### But du programme
