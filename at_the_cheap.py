@@ -82,6 +82,7 @@ while menu_choice != 0:
                     finish = True
                 else:
                     finish = False
+            cash_register.new_client(new_sell.name, new_sell.firstname, new_sell.basket)
         case 2:
             # Display stock
             cash_register.show_stock()
