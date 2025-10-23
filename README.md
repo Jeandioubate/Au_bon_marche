@@ -2,11 +2,11 @@
 ## Caisse en ligne de commande
 
 ### Sommaire
-But du programme(#but-du-programme)
+[But du programme](#but-du-programme)
 
-Manuel d'utilisation(#manuel-d'utilisation)
+[Manuel d'utilisation](#manuel-d'utilisation)
 
-Classes et méthodes(classes-et-méthodes)
+[Classes et méthodes](#classes-et-méthodes)
 
 Notes(#notes)
 
