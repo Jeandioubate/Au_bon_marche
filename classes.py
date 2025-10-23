@@ -12,8 +12,19 @@ class Product:
     quantity: float  # quantité disponible (en kg ou à l'unité')
     price: float     # prix unitaire
     unit: str        # 'kg' ou 'piece'
+    product_type: str
+    # Constants
+    TYPE_FRUIT = "Fruit"
+    TYPE_VEGE = "Vegetable"
     UNIT_KG = "kg"
     UNIT_PIECE = "pièce"
+
+    def __init__(self, name, quantity, price, unit, product_type):
+        self.name = name
+        self.quantity = quantity
+        self.price = price
+        self.unit = unit
+        self.product_type = product_type
 
     def sell(self, qty: float) -> bool:
         """
