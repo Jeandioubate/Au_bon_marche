@@ -98,3 +98,11 @@ class Primeur:
     def __init__(self):
         self.products: Dict[str, Product] = {}
         self.clients: List[Client] = []
+
+    def show_stock(self) -> None:
+        """Affiche le stock actuel des produits."""
+        print("\n STOCK ACTUEL :")
+        print("-" * 45)
+        for p in self.products.values():
+            print(f"{p.name:<20} {p.quantity:.2f} {p.unit:<5} - {p.price:.2f} €/ {p.unit}")
+        print("-" * 45)
