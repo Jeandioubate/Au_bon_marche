@@ -95,7 +95,7 @@ class Client:
 class Primeur:
     """Gère le stock du magasin et les clients de la journée."""
 
-    def __init__(self):
+    def __init__(self, firstname, name, basket, total_purchase):
         self.products: Dict[str, Product] = {}
         self.clients: List[Client] = []
 
@@ -106,3 +106,19 @@ class Primeur:
         for p in self.products.values():
             print(f"{p.name:<20} {p.quantity:.2f} {p.unit:<5} - {p.price:.2f} €/ {p.unit}")
         print("-" * 45)
+
+    def display_ticket(self, client: Client) -> None:
+        """Affiche un ticket de caisse pour le client."""
+        print("\n Ticket de caisse")
+        print(f"Client : {client.firstname} {client.name}")
+        print("-" * 40)
+        total = 0
+        for name, qty in client.basket.values():
+            product = self.products[name]
+            subtotal = qty * product.price
+            print(f"{product.name:<20} {qty:.2f} {product.unit:<5} x {product.price:.2f} € = {qty * product.price:.2f} €")
+            total += subtotal
+        print("-" * 40)
+        print(f"Total à payer : {total:.2f} €")
+        print("=" * 40 + "\n")
+
