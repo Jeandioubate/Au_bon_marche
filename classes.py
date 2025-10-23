@@ -68,7 +68,7 @@ class Client:
         else:
             self.basket[product] += quantity
 
-    def total_purchase(self, products: list) -> float:
+    def total_purchase(self, products: dict) -> float:
         """
         Usage : calculate the amount of the purchase's total
         :param products: list of products
