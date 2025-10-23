@@ -68,6 +68,7 @@ class Client:
         """
         self.name = name
         self.firstname = firstname
+        self.basket = {}
 
     def add_purchase(self, product: str, quantity: float) -> None:
         """
@@ -76,7 +77,7 @@ class Client:
         :param quantity: product quantity
         :return:
         """
-        if self.basket[product] == 0:
+        if not product in self.basket.keys():
             self.basket[product] = quantity
         else:
             self.basket[product] += quantity
