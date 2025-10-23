@@ -139,9 +139,7 @@ class Primeur:
     def new_client(self, client: Client ) -> None:
         """
         Gère l'arrivée d'un nouveau client et ses achats.
-        :param firstname: prénom du client
-        :param name: nom du client
-        :param purchases: dictionnaire {nom_produit: quantité_achetée}
+        :param client:
         """
         #client = Client(name, firstname) # Je crée un nouvel objet Client.
         print(f"\n Nouveau client : {client.firstname} {client.name}")
@@ -183,6 +181,11 @@ class Primeur:
             total_revenue += client.total_purchase(self.products)
 
         print(f"Nombre total de clients servis : {total_clients}")
+
+        print("Liste des clients et du total leurs achats : ")
+        for cli in self.clients:
+            print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products)}€")
+
         print(f"Chiffre d'affaires total       : {total_revenue:.2f} €")
         print("-" * 45)
         print("Stock restant :")
