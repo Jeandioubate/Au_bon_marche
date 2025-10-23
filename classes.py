@@ -2,6 +2,7 @@
 # #  -*- coding: utf-8 -*-
 
 from dataclasses import dataclass
+from typing import Dict, List
 
 
 @dataclass
@@ -90,3 +91,10 @@ class Client:
         :return:
         """
         return qty * price
+
+class Primeur:
+    """Gère le stock du magasin et les clients de la journée."""
+
+    def __init__(self):
+        self.products: Dict[str, Product] = {}
+        self.clients: List[Client] = []
