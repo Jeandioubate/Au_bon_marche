@@ -184,7 +184,7 @@ class Primeur:
 
         print("Liste des clients et du total leurs achats : ")
         for cli in self.clients:
-            print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products)}€")
+            print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products):.2f}€")
 
         print(f"Chiffre d'affaires total       : {total_revenue:.2f} €")
         print("-" * 45)
