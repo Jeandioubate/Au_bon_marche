@@ -38,7 +38,7 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 
 
 ### Classes et méthodes
-- Produit :
+- Produit : représente un produit
 	- Attributs :
 		- name : Nom du produit
 		- product_type : type du produit (fruit ou légume)
@@ -46,23 +46,23 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 		- unit : indique si le prix est au kg ou à la pièce
   		- quantity : quantité en stock
 	- Méthodes :
-		- sell
-- Client :
+		- sell : vend une quantité de produit
+- Client : représente un client
 	- Attributs :
-		- name
-		- firstname
-		- basket
+		- name : nom du client
+		- firstname : prénom du client
+		- basket : panier du client (liste de produits et quantité achetée)
 	- Méthodes :
-		- add_purchase
-		- total_purchase
-  		- calculate_product_purchase
+		- add_purchase : ajouter un produit au panier, avec la quantité
+		- total_purchase : calcule le total d'un panier
+  		- calculate_product_purchase : calcule le montant de la vente d'un produit
 - Primeur :
 	- Attributs :
-		- products
-		- clients
+		- products : liste des produits du magasin, avec la quantité en stock
+		- clients : liste des clients
 	- Méthodes :
-		- show_stock
-		- display_ticket
-		- new_client
-		- daily_report
-  		- add_product
+		- show_stock : affiche le stock courant
+		- display_ticket : affiche le ticket d'une vente
+		- new_client : ajouter un client et effectuer une vente
+		- daily_report : afficher le bilan de la journée
+  		- add_product : ajoute un produit dans le stock
