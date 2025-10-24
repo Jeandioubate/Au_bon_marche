@@ -14,10 +14,11 @@
 
 « Au bon marché » est un primeur vendant des fruits et légumes de saison, à la pièce ou au kilo. Le tableau suivant recense le stock et les différents prix début janvier 2025. Le programme a pour but de permettre aux clients de la journée de faire leurs achats en choisissant les fruits et légumes souhaités (et leur quantité).
 
-|Article			|Quantité	|Prix unitaire|
--------------------------------------------------------
-Clémentine		|6 kg		|2,90 € / kg
--------------------------------------------------------
+| Article | Quantité | Prix unitaire |
+--------------------------------------
+| Clémentine | 6 kg | 2,90 € / kg |
+--------------------------------------
+
 Carotte			|7 kg		|1,30 € / kg
 -------------------------------------------------------
 Datte			|4 kg		|7,00 € / kg
