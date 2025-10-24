@@ -166,31 +166,48 @@ class Primeur:
     def daily_report(self) -> None:
         """Affiche le bilan de la journée : nombre de clients, chiffre d’affaires et état du stock."""
         print("\n BILAN DE LA JOURNÉE")
-        print("=" * 45)
+        print("=" * 60)
 
         if not self.clients:
             print("Aucun client n’a été enregistré aujourd’hui.")
-            print("=" * 45)
+            print("=" * 60)
             return
 
         total_clients = len(self.clients)
-        total_revenue = 0
+        total_revenue = 0.0
 
         for client in self.clients:
-            total_revenue += client.total_purchase(self.products)
+            print(f"\n Client : {client.firstname} {client.name}")
+            print("-" * 60)
+            client_total = 0.0
 
+            for product_name, qty in client.basket.items():
+                if product_name in self.products:
+                    product = self.products[product_name]
+                    subtotal = product.price * qty
+                    client_total += subtotal
+                    print(f" - {qty:.2f} {product.unit:<5} de {product.name:<15} {product.price:.2f} €/ {product.unit:<5} -> {subtotal:.2f} €")
+                else:
+                    print(f" Produit {product_name} non trouvé dans le stock.")
+
+            total_revenue += client_total
+            print(f" Total client : {client_total:.2f} €")
+            print("-" * 60)
+
+        print("\n RESUME GLOBAL")
+        print("-" * 60)
         print(f"Nombre total de clients servis : {total_clients}")
-
-        print("Liste des clients et du total leurs achats : ")
-        for cli in self.clients:
-            print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products):.2f}€")
+        #print("Liste des clients et du total leurs achats : ")
+        #for cli in self.clients:
+            #print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products):.2f}€")
 
         print(f"Chiffre d'affaires total       : {total_revenue:.2f} €")
-        print("-" * 45)
-        print("Stock restant :")
+        print("\n STOCK RESTANT")
+        print("-" * 60)
+        #print("Stock restant :")
         for p in self.products.values():
             print(f"{p.name:<20} {p.quantity:.2f} {p.unit:<5} restants")
-        print("=" * 45)
+        print("=" * 60)
 
     def add_product(self, product) -> None:
         """
