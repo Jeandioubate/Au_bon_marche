@@ -61,7 +61,8 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 		- products
 		- clients
 	- Méthodes :
-		- Ajouter_produit()
-		- Nouveau_client (nom, prénom)
-		- Afficher bilan()
-		- Afficher stock()
+		- show_stock
+		- display_ticket
+		- new_client
+		- daily_report
+  		- add_product
