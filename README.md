@@ -40,12 +40,11 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 ### Classes et méthodes
 - Produit :
 	- Attributs :
-		- Nom
-		- Type_pdt
-		- Prix unitaire
-		- Type_prix (kg/unité)
-		- Stock initial
-		- Stock courant
+		- name : Nom du produit
+		- product_type : type du produit (fruit ou légume)
+		- price : prix au kg ou à la pièce
+		- unit : indique si le prix est au kg ou à la pièce
+  		- quantity : quantité en stock
 	- Méthodes :
 		- Vendre(qte)
 		- Afficher_produit
