@@ -2,7 +2,7 @@
 # #  -*- coding: utf-8 -*-
 
 from dataclasses import dataclass
-from itertools import product
+
 from typing import Dict, List
 
 
@@ -62,10 +62,10 @@ class Client:
 
     def __init__(self, name: str, firstname: str) -> None:
         """
-        Usage : Create new client
-        :param name: Client's name
-        :param firstname: Client's firstname
-        Note : basket is not initialized
+        Usage : Créer un nouveau client
+        :param name: Nom du client
+        :param firstname: Prénom du client
+        Note : Le panier n'est pas initialisé
         """
         self.name = name
         self.firstname = firstname
@@ -73,9 +73,9 @@ class Client:
 
     def add_purchase(self, product: str, quantity: float) -> None:
         """
-        Usage : add purchase in basket
-        :param product: product name
-        :param quantity: product quantity
+        Usage : Ajouter l'achat au panier
+        :param product: nom du produit
+        :param quantity: quantité du produit
         :return:
         """
         if not product in self.basket.keys():
@@ -85,9 +85,9 @@ class Client:
 
     def total_purchase(self, products: dict) -> float:
         """
-        Usage : calculate the amount of the purchase's total
-        :param products: list of products
-        :return: total amount of the basket
+        Usage : calculer le montant total de l'achat
+        :param products: Liste des produits
+        :return: montant total du panier
         """
         total = 0
         for product_purchase in products:
@@ -99,9 +99,9 @@ class Client:
     @staticmethod
     def calculate_product_purchase(price: float, qty: float) -> float:
         """
-        Usage : calculate the price of the product with the quantity
-        :param price: product's unit price
-        :param qty: quantity purchased
+        Usage : calculer le prix du produit en fonction de la quantité
+        :param price: prix unitaire du produit
+        :param qty: quantité achetée
         :return:
         """
         return qty * price
@@ -140,7 +140,7 @@ class Primeur:
         Gère l'arrivée d'un nouveau client et ses achats.
         :param client:
         """
-        #client = Client(name, firstname) # Je crée un nouvel objet Client.
+
         print(f"\n Nouveau client : {client.firstname} {client.name}")
 
         for product_name, qty in client.basket.items(): # Je parcours les achats demandés
@@ -152,7 +152,7 @@ class Primeur:
 
             if product.sell(qty):   # Je vérifie que la quantité demandée est disponible et mets à jour le stock et le
 
-                #client.add_purchase(product_name, qty) # le panier du client.
+
                 print(f" {qty} {product.unit} de {product.name} vendu.")
             else:
                 print(f" Stock insuffisant pour {product.name}")
@@ -197,9 +197,7 @@ class Primeur:
         print("\n RESUME GLOBAL")
         print("-" * 60)
         print(f"Nombre total de clients servis : {total_clients}")
-        #print("Liste des clients et du total leurs achats : ")
-        #for cli in self.clients:
-            #print(f"{cli.name} {cli.firstname} :           {cli.total_purchase(self.products):.2f}€")
+
 
         print(f"Chiffre d'affaires total       : {total_revenue:.2f} €")
         print("\n STOCK RESTANT")
