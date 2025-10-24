@@ -46,8 +46,7 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 		- unit : indique si le prix est au kg ou à la pièce
   		- quantity : quantité en stock
 	- Méthodes :
-		- Vendre(qte)
-		- Afficher_produit
+		- sell
 - Client :
 	- Attributs :
 		- Nom
