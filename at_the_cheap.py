@@ -56,44 +56,44 @@ cash_register.add_product(stock)
 
 # Menu
 while menu_choice != 0:
-    print("Welcome to Au bon marché !")
+    print("Bienvenue Au bon marché !")
     print("Menu")
-    print("1 - New sell")
-    print("2 - Display current stock")
-    print("3 - Display daily report")
-    print("0 - Quit")
+    print("1 - Nouvelle vente")
+    print("2 - Afficher le stock actuel")
+    print("3 - Afficher le rapport quotidien")
+    print("0 - Quitter")
     try:
-        menu_choice = int(input("What do you want to do ?\n"))
+        menu_choice = int(input("Que voulez-vous faire ?\n"))
     except ValueError:
-        print("Error : must enter a number between 0 and 3.")
+        print("Erreur : Choisissez une option entre 0 et 3.")
         menu_choice = -1
     match menu_choice:
         case 0:
             break
         case 1:
             # New sell
-            client_name = str(input("Please enter the client's lastname : \n"))
-            client_firstname = str(input("Please enter the client's firstname : \n"))
+            client_name = str(input("S'il vous plait, veuillez saisir le nom du client : \n"))
+            client_firstname = str(input("S'il vous plait, veuillez saisir le prénom du client : \n"))
             new_sell = classes.Client(client_name, client_firstname)
             finish = False
             while not finish:
                 cash_register.show_stock()
                 product_name = ""
                 while product_name not in cash_register.products:
-                    product_name = str(input("What product do you want to purchase ? (type product's name\n"))
+                    product_name = str(input("Quel produit souhaitez-vous acheter ? (Tapez le nom du produit\n"))
                 product_quantity = -1
                 while product_quantity == -1:
                     try:
-                        product_quantity = float(input("What quantity do you want to buy ? (type a float number)\n"))
+                        product_quantity = float(input("Quelle quantité souhaitez-vous acheter ? (Saisissez un nombre décimal)\n"))
                     except ValueError:
-                        print("Error : value must be a positive number.")
+                        print("Erreur : La valeur doit être un nombre positif.")
                 new_sell.add_purchase(product_name, product_quantity)
                 finish_choice = -1
                 while finish_choice not in (0,1):
                     try:
-                        finish_choice = int(input("Continue purchase ?\n 0 - No\n 1 - Yes\n"))
+                        finish_choice = int(input("Poursuivre l'achat ?\n 0 - Non\n 1 - Oui\n"))
                     except ValueError:
-                        print("Error : value must be a number between 0 and 1")
+                        print("Erreur : La valeur doit être comprise entre 0 et 1")
                         finish_choice = -1
                 if finish_choice == 0:
                     finish = True
@@ -107,7 +107,7 @@ while menu_choice != 0:
             # Display daily report
             cash_register.daily_report()
         case _:
-            print("Error : must enter a number between 0 and 3.")
+            print("Erreur : Vous devez saisir un nombre compris entre 0 et 3.")
             menu_choice = -1
 
-print("Goodbye !")
+print("A bientôt !")
