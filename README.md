@@ -49,17 +49,17 @@ Chaque option est précédée d'un nombre qu'il faut entrer pour accéder à la 
 		- sell
 - Client :
 	- Attributs :
-		- Nom
-		- Prénom
-		- Panier {nom_produit : qté}
+		- name
+		- firstname
+		- basket
 	- Méthodes :
-		- Ajouter_achat(produit, qté)
-		- Total()
-		- Afficher ticket()
+		- add_purchase
+		- total_purchase
+  		- calculate_product_purchase
 - Primeur :
 	- Attributs :
-		- Produits []
-		- Client []
+		- products
+		- clients
 	- Méthodes :
 		- Ajouter_produit()
 		- Nouveau_client (nom, prénom)
